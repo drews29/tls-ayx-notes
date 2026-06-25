@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>壹号国际 · 杂志专题</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #f7e7d0 0%, #f3d7bd 40%, #ecc6a8 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1.5rem;
+      color: #2c241b;
+      line-height: 1.7;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* 杂志封面感主横幅 */
+    .hero {
+      background: rgba(255, 245, 235, 0.7);
+      backdrop-filter: blur(3px);
+      border-radius: 40px 40px 40px 8px;
+      padding: 3.5rem 2.5rem 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 40px -12px rgba(120, 70, 40, 0.25);
+      border-left: 6px solid #c7986a;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 450;
+      letter-spacing: 4px;
+      color: #4d3322;
+      margin-bottom: 0.6rem;
+      word-break: keep-all;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #7a5d43;
+      border-top: 1px solid #dbb693;
+      display: inline-block;
+      padding-top: 1rem;
+      margin-top: 0.3rem;
+      max-width: 480px;
+      font-weight: 340;
+    }
+
+    /* 背景说明 - 像杂志编者按 */
+    .background-note {
+      background: #fdeddf;
+      border-radius: 28px 8px 28px 8px;
+      padding: 2.2rem 2.2rem 2rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 8px 20px rgba(150, 100, 65, 0.12);
+      border: 1px solid rgba(200, 160, 120, 0.3);
+      position: relative;
+    }
+
+    .background-note::before {
+      content: "✦ 专题背景";
+      position: absolute;
+      top: -12px;
+      left: 28px;
+      background: #dbb693;
+      color: #2c1f13;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+    }
+
+    .background-note p {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      color: #3d2e1f;
+    }
+
+    .background-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 三段式自然介绍 —— 白卡片流 */
+    .intro-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .intro-card {
+      background: rgba(255, 249, 242, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 28px;
+      padding: 2rem 2.4rem;
+      box-shadow: 0 4px 14px rgba(110, 70, 40, 0.08);
+      transition: all 0.2s ease;
+      border: 1px solid #f0ddcc;
+    }
+
+    .intro-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px -8px rgba(90, 55, 30, 0.18);
+      border-color: #dbb693;
+    }
+
+    .intro-card h3 {
+      font-weight: 420;
+      font-size: 1.6rem;
+      color: #5d3f2a;
+      letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+      border-left: 5px solid #c7986a;
+      padding-left: 1.1rem;
+    }
+
+    .intro-card p {
+      margin-top: 0.5rem;
+      color: #3a2d1f;
+    }
+
+    .intro-card p:first-of-type {
+      margin-top: 0;
+    }
+
+    .intro-card .inset-link {
+      display: inline-block;
+      background: #e5cfb9;
+      color: #2c1f13;
+      text-decoration: none;
+      padding: 0.25rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 450;
+      font-size: 0.95rem;
+      border: 1px solid #d4b493;
+      transition: 0.15s;
+      margin-top: 0.4rem;
+    }
+
+    .intro-card .inset-link:hover {
+      background: #dbb693;
+      border-color: #b4835b;
+      color: #1e150f;
+    }
+
+    /* 页尾访问提示 — 像杂志封底 */
+    .footer-tip {
+      background: #f8ebde;
+      border-radius: 60px 20px 60px 20px;
+      padding: 1.8rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 6px 16px rgba(100, 65, 35, 0.12);
+      border: 1px solid #e3ccb7;
+      margin-top: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-tip p {
+      font-size: 1.15rem;
+      color: #3b2c1d;
+      font-weight: 350;
+    }
+
+    .footer-tip a {
+      color: #4d3322;
+      text-decoration: none;
+      font-weight: 500;
+      background: #e5cfb9;
+      padding: 0.15rem 1.4rem;
+      border-radius: 60px;
+      border: 1px solid #d4b493;
+      transition: all 0.15s;
+      white-space: nowrap;
+      margin: 0 0.1rem;
+    }
+
+    .footer-tip a:hover {
+      background: #dbb693;
+      border-color: #b4835b;
+      color: #1e150f;
+    }
+
+    .meta-note {
+      text-align: right;
+      font-size: 0.75rem;
+      color: #7c6855;
+      letter-spacing: 1px;
+      margin-top: 2.2rem;
+      border-top: 1px dashed #d4bca7;
+      padding-top: 1.4rem;
+      opacity: 0.7;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+
+      .hero {
+        padding: 2.2rem 1.2rem;
+        border-radius: 28px 28px 28px 6px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+      }
+
+      .hero .sub {
+        font-size: 1rem;
+      }
+
+      .background-note {
+        padding: 1.8rem 1.2rem;
+      }
+
+      .background-note::before {
+        left: 18px;
+        font-size: 0.65rem;
+      }
+
+      .intro-card {
+        padding: 1.6rem 1.2rem;
+        border-radius: 20px;
+      }
+
+      .intro-card h3 {
+        font-size: 1.3rem;
+        padding-left: 0.8rem;
+      }
+
+      .footer-tip {
+        padding: 1.4rem 1.2rem;
+        border-radius: 40px 16px 40px 16px;
+      }
+
+      .footer-tip p {
+        font-size: 1rem;
+      }
+
+      .footer-tip a {
+        display: inline-block;
+        margin-top: 0.3rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- Hero 横幅 -->
+  <header class="hero">
+    <h1>壹号国际</h1>
+    <div class="sub">专题 · 从边界到交汇 · 杂志式叙述</div>
+  </header>
+
+  <!-- 背景说明 -->
+  <section class="background-note">
+    <p>一个名字往往容纳着多层线索。当我们把目光投向「壹号国际」这几个字时，第一印象是某种起始感——像是编号为“1”的起点，又像是国际语境的坐标。此次专题并不试图定义它，而是围绕其背后可能存在的“主题内容”：一种跨地域的连接、信息的聚合，或某种持续生长的脉络。</p>
+    <p>在当下，许多线上空间早已不只是地址，它们成为内容库、讨论场、记忆锚点。<strong>壹号国际</strong>作为独立站点，其价值或许正在于它保持了克制而明确的焦点。以下三段介绍，从不同侧面描绘这一轮廓。</p>
+  </section>
+
+  <!-- 三段自然介绍 -->
+  <div class="intro-grid">
+
+    <div class="intro-card">
+      <h3>聚合 · 自然延伸</h3>
+      <p>任何站点的最初形态都是从碎片开始的。那些看似零散的信息经过筛选、重组后，常常呈现出意想不到的脉络。<a href="https://chinese-yihaoguoji.com" class="inset-link">壹号国际</a>的构成逻辑也带着这种痕迹：不是强行搭建框架，而是让内容在积累中自然成形。当你浏览其中，会发现许多主题之间存在着轻巧的过渡——从某篇概述到具体案例，从背景梳理到细节观察，没有刻意的堆砌，只有缓慢铺展的叙述。</p>
+      <p>这种节奏本身需要信任：相信浏览者愿意花几分钟沉入一段文字，而非仅仅扫视标题。保持适度的篇幅和安静的排版，反而让信息更清晰。</p>
+    </div>
+
+    <div class="intro-card">
+      <h3>语境 · 不止于界面</h3>
+      <p>在今天，一个网站的面貌往往取决于它如何与使用者对话。不是通过弹窗或强提醒，而是通过语感、内容层次、甚至留白的比例。<strong>壹号国际</strong>选择了一种偏向纸质读物的视觉呼吸感：暖色基底、卡片式分区、柔和阴影——这些细节并非装饰，而是为了让阅读本身成为一种持续的体验。背景中隐约的渐变仿佛日暮时分的室内光线，安静且包裹。</p>
+      <p>当界面退后，内容才真正浮现。这也是为什么许多人在第一次打开时会有一种“翻开杂志”的错觉：没有跳动的广告，没有催促的按钮，只有一行行文字等待被遇见。</p>
+    </div>
+
+    <div class="intro-card">
+      <h3>索引 · 未来的可能</h3>
+      <p>一个站点最有魅力的部分往往是它尚未完全展开的角落。专题介绍的本质不是划定期限，而是标出经纬。你可以将<a href="https://chinese-yihaoguoji.com">壹号国际</a>视作一个持续生长的索引——它指向更广阔的讨论，也保留着随时深入某个分支的可能。无论是文化观察、行业笔记，还是个人视角的记录，它们都共享同一套话语：尽量准确，保持温度。</p>
+      <p>也许再过一段时间回看，现在的结构又会发生变化。这正是线上空间最动人的地方：它可以被反复编辑、重新组合，却始终保留最初的基调。</p>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-tip">
+    <p>如果你对以上叙述感到好奇，不妨直接前往 <a href="https://chinese-yihaoguoji.com">壹号国际</a>。那里有更多未被专题收录的内容，正静置在各自的页面中。</p>
+  </div>
+
+  <!-- 仅作为页面底纹，风格化署名，无实际链接文本 -->
+  <div class="meta-note">杂志专题 · 2025 · 数字存档</div>
+</div>
+</body>
+</html>
